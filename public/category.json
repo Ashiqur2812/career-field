@@ -1,0 +1,31 @@
+{
+    "status": true,
+    "data": {
+        "service_category": [
+            {
+                "services_id": "1",
+                "serviceName": "Career Counseling Sessions"
+            },
+            {
+                "services_id": "2",
+                "serviceName": "Resume Review"
+            },
+            {
+                "services_id": "3",
+                "serviceName": "Interview Preparation"
+            },
+            {
+                "services_id": "4",
+                "serviceName": "Skill Assessment"
+            },
+            {
+                "services_id": "5",
+                "serviceName": "Job Market Trends Analysis"
+            },
+            {
+                "services_id": "6",
+                "serviceName": "Career Planning Workshop"
+            }
+        ]
+    }
+}

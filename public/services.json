@@ -1,0 +1,74 @@
+[
+    {
+        "services_id": "1",
+        "image": "https://i.ibb.co.com/bQyNGJT/confident-applicant-smiling-job-interview-with-diverse-hr-managers-1163-4643.jpg",
+        "serviceName": "Career Counseling Sessions",
+        "category": "Online",
+        "description": "Personalized one-on-one counseling to help you choose the right career path based on your interests and skills.",
+        "pricing": "$50",
+        "duration": "05-12-24, 5:00 PM - 6:00 PM",
+        "counselor": "Dr. Emily Carter",
+        "rating": 4.8,
+        "learnMore": "/services/1"
+    },
+    {
+        "services_id": "2",
+        "image": "https://i.ibb.co.com/h8XWNwH/job-vacancy-isolated-object-with-female-hr-manager-studying-resume-candidates-vacant-position-vector.jpg",
+        "serviceName": "Resume Review",
+        "category": "Offline",
+        "description": "Professional review of your resume to ensure it stands out to employers and highlights your skills effectively.",
+        "pricing": "$30",
+        "duration": "06-12-24, 3:00 PM - 4:00 PM",
+        "counselor": "Mr. John Smith",
+        "rating": 4.7,
+        "learnMore": "/services/2"
+    },
+    {
+        "services_id": "3",
+        "image": "https://i.ibb.co.com/9YMNYyp/close-up-people-discussing-work-23-2149300686.jpg",
+        "serviceName": "Interview Preparation",
+        "category": "Group",
+        "description": "Interactive group sessions to prepare you for job interviews with tips, mock sessions, and feedback.",
+        "pricing": "$40",
+        "duration": "07-12-24, 2:00 PM - 3:30 PM",
+        "counselor": "Ms. Sarah Johnson",
+        "rating": 4.9,
+        "learnMore": "/services/3"
+    },
+    {
+        "services_id": "4",
+        "image": "https://i.ibb.co.com/p6q1678/successful-businessman-passes-assessment-vector-illustration-620585-1416.jpg",
+        "serviceName": "Skill Assessment",
+        "category": "Online",
+        "description": "Comprehensive assessments to evaluate your skills and suggest areas of improvement for career growth.",
+        "pricing": "$45",
+        "duration": "08-12-24, 4:00 PM - 5:00 PM",
+        "counselor": "Dr. Michael Brown",
+        "rating": 4.6,
+        "learnMore": "/services/4"
+    },
+    {
+        "services_id": "5",
+        "image": "https://i.ibb.co.com/xX2vRCQ/young-woman-with-document-business-meeting-392895-16815.jpg",
+        "serviceName": "Job Market Trends Analysis",
+        "category": "Online",
+        "description": "Get insights into current job market trends and demands to align your career goals effectively.",
+        "pricing": "$35",
+        "duration": "09-12-24, 6:00 PM - 7:00 PM",
+        "counselor": "Ms. Laura Davis",
+        "rating": 4.5,
+        "learnMore": "/services/5"
+    },
+    {
+        "services_id": "6",
+        "image": "https://i.ibb.co.com/brXCB83/group-businesspeople-having-conversation-office-23-2147826607.jpg",
+        "serviceName": "Career Planning Workshop",
+        "category": "Group",
+        "description": "A workshop designed to guide participants through long-term career planning strategies.",
+        "pricing": "$60",
+        "duration": "10-12-24, 10:00 AM - 1:00 PM",
+        "counselor": "Dr. Alice Wilson",
+        "rating": 4.9,
+        "learnMore": "/services/6"
+    }
+]
