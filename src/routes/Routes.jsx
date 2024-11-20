@@ -11,10 +11,6 @@ const Router = createBrowserRouter([
 
     },
     {
-        path: '/career',
-        element: <h2>This the career Hub</h2>
-    },
-    {
         path: '/auth',
         element: <AuthLayout></AuthLayout>,
         children: [
@@ -27,6 +23,10 @@ const Router = createBrowserRouter([
                 element: <Register></Register>
             }
         ]
+    },
+    {
+        path: '/career',
+        element: <h2>This the career Hub</h2>
     },
     {
         path: '*',

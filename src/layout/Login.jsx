@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import google from '../assets/google-logo.png';
+import { AuthContext } from '../provider/AuthProvider';
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const { signInUser, setUser } = useContext(AuthContext);
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log({ email, password });
+
+        signInUser(email,password)
+        .then(res=>{
+            setUser(res.user)
+            console.log(res.user)
+        })
+        .catch(error=>{
+            console.log('ERROR',error.message)
+        })
+    };
 
     return (
         <div>
@@ -11,14 +29,13 @@ const Login = () => {
                     <h2 className="text-3xl font-bold text-center text-indigo-700 mb-6">
                         CareerField Login
                     </h2>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <div className="mb-4">
                             <label for="email" className="block text-sm font-medium text-gray-700">
                                 Email Address
                             </label>
                             <input
                                 type="email"
-                                id="email"
                                 name="email"
                                 className="input input-bordered w-full mt-2"
                                 placeholder="Enter your email"
@@ -32,7 +49,6 @@ const Login = () => {
                             </label>
                             <input
                                 type={showPassword ? "text" : "password"}
-                                id="password"
                                 name="password"
                                 className="input input-bordered w-full mt-2"
                                 placeholder="Enter your password"

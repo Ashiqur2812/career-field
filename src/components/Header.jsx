@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import userIcon from '../assets/user.png';
+import { AuthContext } from '../provider/AuthProvider';
+
 const Header = () => {
+    const { user,logOut } = useContext(AuthContext);
+
     return (
         <>
             {/* <div className="bg-gradient-to-r from-blue-500 via-teal-400 to-fuchsia-500 shadow-lg">
@@ -94,7 +98,7 @@ const Header = () => {
                                 Services
                             </Link>
                             <Link className="text-white hover:text-yellow-300" to="/serviceDetails">
-                               Service Details
+                                Service Details
                             </Link>
                         </ul>
                     </div>
@@ -120,9 +124,11 @@ const Header = () => {
                 </div>
                 <div className="navbar-end gap-4">
                     <img src={userIcon} alt="" />
-                    <Link to="/auth/login" className="btn btn-outline text-white">
-                        Login
-                    </Link>
+                    {
+                        user && user?.email ? <button onClick={logOut} className='btn btn-outline text-white'>LogOut</button> : <Link to="/auth/login" className="btn btn-outline text-white">
+                            Login
+                        </Link>
+                    }
                 </div>
             </div>
         </>
