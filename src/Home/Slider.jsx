@@ -19,7 +19,7 @@ const Slider = () => {
                     <img
                         src={banner}
                         className="rounded-lg shadow-lg w-[20rem] lg:w-[25rem] object-cover"
-                        alt="Career Planning"
+                        alt=""
                     />
                 </div>
 

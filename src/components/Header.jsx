@@ -67,7 +67,7 @@ const Header = () => {
                 </ul>
             </div>
             </div> */}
-            <div className="navbar bg-base-100 bg-gradient-to-r from-blue-500 via-teal-400 to-fuchsia-500 shadow-lg px-12">
+            <div className="navbar bg-base-100 bg-gradient-to-r from-blue-500 via-teal-400 to-fuchsia-500  px-12 fixed top-0 w-full transition-all duration-300 shadow-md">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -93,8 +93,8 @@ const Header = () => {
                             <Link className="text-white hover:text-yellow-300" to="/services">
                                 Services
                             </Link>
-                            <Link className="text-white hover:text-yellow-300" to="/profile">
-                                My Profile
+                            <Link className="text-white hover:text-yellow-300" to="/serviceDetails">
+                               Service Details
                             </Link>
                         </ul>
                     </div>
@@ -113,8 +113,8 @@ const Header = () => {
                         <Link className="text-white hover:text-yellow-300 px-6" to="/services">
                             Services
                         </Link>
-                        <Link className="text-white hover:text-yellow-300" to="/profile">
-                            My Profile
+                        <Link className="text-white hover:text-yellow-300" to="/serviceDetails">
+                            Service Details
                         </Link>
                     </ul>
                 </div>
