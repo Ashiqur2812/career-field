@@ -71,7 +71,7 @@ const Header = () => {
                 </ul>
             </div>
             </div> */}
-            <div className="navbar bg-base-100 bg-gradient-to-r from-blue-500 via-teal-400 to-fuchsia-500  px-12 fixed top-0 w-full transition-all duration-300 shadow-md">
+            <div className="navbar bg-base-100 bg-gradient-to-r from-blue-500 to-purple-500 z-50 px-12 fixed top-0 w-full transition-all duration-300  backdrop-blur-2xl">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
