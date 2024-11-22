@@ -1,12 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from '../assets/google-logo.png';
 import { AuthContext } from '../provider/AuthProvider';
-// import { label } from 'framer-motion/client';
+import toast from 'react-hot-toast';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { auth } from '../firebase_init';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { signInUser, setUser, googleAuth } = useContext(AuthContext);
+    const emailRef = useRef();
     const [error, setError] = useState({});
     const location = useLocation();
     console.log(location);
@@ -29,14 +32,19 @@ const Login = () => {
             });
     };
 
-    // const handleGoogleLogin = () =>{
-    //     googleAuth().then(()=>{
-    //         console.log('success')
-    //     })
-    //     .catch(error=>{
-    //         console.log('ERROR',error)
-    //     })
-    // }
+    const handleForgotPassword = () => {
+        console.log('Get me an email address', emailRef.current.value);
+        const email = emailRef.current.value;
+        if (!email) {
+            toast.error('Please provide a valid email address');
+        }
+        else {
+            sendPasswordResetEmail(auth,email)
+                .then(() => {
+                    toast.success('Password reset email sent. Please check your email');
+                });
+        }
+    };
 
     return (
         <div>
@@ -51,6 +59,7 @@ const Login = () => {
                                 Email Address
                             </label>
                             <input
+                                ref={emailRef}
                                 type="email"
                                 name="email"
                                 className="input input-bordered w-full mt-2"
@@ -79,13 +88,13 @@ const Login = () => {
                             </button>
                             {
                                 error.login && (
-                                   <label className='label text-sm text-rose-600'>
-                                    {error.login}
-                                   </label>
+                                    <label className='label text-sm text-rose-600'>
+                                        {error.login}
+                                    </label>
                                 )
                             }
-                            <label className='label'>
-                               <a href="#" className='label-text-alt link link-hover'>Forget password?</a>
+                            <label onClick={handleForgotPassword} className='label'>
+                                <a href="#" className='label-text-alt link link-hover'>Forget password?</a>
                             </label>
                         </div>
                         <button className="btn btn-outline w-full mt-4">Login</button>

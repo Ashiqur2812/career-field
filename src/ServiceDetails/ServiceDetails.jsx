@@ -19,7 +19,7 @@ const ServiceDetails = () => {
                 <div class="bg-gray-50 min-h-screen flex flex-col items-center">
                     <section class="relative w-full bg-white shadow-md">
                         <div class="grid md:grid-cols-2 items-center pb-24">
-                            <div class="w-[33rem] ml-24 bg-cover bg-center ">
+                            <div class="md:w-[33rem] md:ml-24 bg-cover bg-center ">
                                 <img src={data.image} alt="" />
                             </div>
                             <div class="p-8">

@@ -7,6 +7,7 @@ import ServiceDetails from "../ServiceDetails/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../Home/MyProfile";
 import About from "../Home/About";
+import NotFound from "../NotFound/NotFound";
 
 const Router = createBrowserRouter([
     {
@@ -61,7 +62,7 @@ const Router = createBrowserRouter([
     },
     {
         path: '*',
-        element: <h1>Page is not found</h1>
+        element: <NotFound></NotFound>
     }
 ]);
 
