@@ -1,11 +1,16 @@
 import React, { useContext, useState } from "react";
 import google from '../assets/google-logo.png';
-import { Form, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
+import { sendEmailVerification } from "firebase/auth";
+import { auth } from "../firebase_init";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { createUser, user, setUser } = useContext(AuthContext);
+    const { createUser, setUser, googleAuth, updateUser } = useContext(AuthContext);
+    const [error, setError] = useState({});
+    const navigate = useNavigate();
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.target);
@@ -13,15 +18,30 @@ const Register = () => {
         const email = form.get('email');
         const photo = form.get('photo');
         const password = form.get('password');
-        console.log({ name, email, photo, password });
+        console.log(name, email, photo, password);
+        setError({ ...error, register: error.code });
+
+        if (password.length < 6) {
+            toast.error('Password must have at least 6 characters');
+            return;
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])$/;
+
+        if (!passwordRegex.test(password)) {
+            toast.error("Password must have at least one uppercase letter, one lowercase letter.");
+            return;
+        }
+
+
         createUser(email, password)
             .then(res => {
                 setUser(res.user);
-                console.log(res.user);
+                toast.success(res.user);
             })
             .catch(error => {
                 setUser('ERROR', error.message);
-                console.log(error.message);
+                toast.error(error.message);
             });
     };
 
@@ -88,6 +108,13 @@ const Register = () => {
                         >
                             {showPassword ? "🙈" : "👁️"}
                         </button>
+                        {
+                            error.register && (
+                                <label className='label text-sm text-rose-600'>
+                                    {error.register}
+                                </label>
+                            )
+                        }
                     </div>
                     <button className="btn btn-primary w-full mt-4">Create Account</button>
                 </form>
@@ -96,7 +123,7 @@ const Register = () => {
                     <span className="px-4 text-sm text-gray-500">or</span>
                     <div className="border-t flex-grow border-gray-300"></div>
                 </div>
-                <button className="btn btn-outline w-full flex items-center justify-center">
+                <button onClick={googleAuth} className="btn btn-outline w-full flex items-center justify-center">
                     <img
                         src={google}
                         alt=""

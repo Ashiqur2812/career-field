@@ -1,10 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from '../assets/google-logo.png';
 import { AuthContext } from '../provider/AuthProvider';
+// import { label } from 'framer-motion/client';
+
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { signInUser, setUser } = useContext(AuthContext);
+    const { signInUser, setUser, googleAuth } = useContext(AuthContext);
+    const [error, setError] = useState({});
+    const location = useLocation();
+    console.log(location);
+    const navigate = useNavigate();
     const handleLogin = e => {
         e.preventDefault();
         const form = new FormData(e.target);
@@ -12,15 +18,25 @@ const Login = () => {
         const password = form.get('password');
         console.log({ email, password });
 
-        signInUser(email,password)
-        .then(res=>{
-            setUser(res.user)
-            console.log(res.user)
-        })
-        .catch(error=>{
-            console.log('ERROR',error.message)
-        })
+        signInUser(email, password)
+            .then(res => {
+                setUser(res.user);
+                console.log(res.user);
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(err => {
+                setError({ ...error, login: err.code });
+            });
     };
+
+    // const handleGoogleLogin = () =>{
+    //     googleAuth().then(()=>{
+    //         console.log('success')
+    //     })
+    //     .catch(error=>{
+    //         console.log('ERROR',error)
+    //     })
+    // }
 
     return (
         <div>
@@ -61,10 +77,20 @@ const Login = () => {
                             >
                                 {showPassword ? "🙈" : "👁️"}
                             </button>
+                            {
+                                error.login && (
+                                   <label className='label text-sm text-rose-600'>
+                                    {error.login}
+                                   </label>
+                                )
+                            }
+                            <label className='label'>
+                               <a href="#" className='label-text-alt link link-hover'>Forget password?</a>
+                            </label>
                         </div>
                         <button className="btn btn-outline w-full mt-4">Login</button>
                     </form>
-                    <button className="btn btn-outline w-full flex items-center justify-center mt-6">
+                    <button onClick={googleAuth} className="btn btn-outline w-full flex items-center justify-center mt-6">
                         <img
                             src={google}
                             alt=""

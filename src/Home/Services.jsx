@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../provider/AuthProvider';
+// import { AuthContext } from '../provider/AuthProvider';
 
 function Services() {
     const [services, setServices] = useState([]);
-  const {user} = useContext(AuthContext)
+//   const {user} = useContext(AuthContext)
 
     useEffect(() => {
         fetch('/services.json')

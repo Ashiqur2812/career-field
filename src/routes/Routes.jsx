@@ -4,6 +4,9 @@ import AuthLayout from "../layout/AuthLayout";
 import Login from "../layout/Login";
 import Register from "../layout/Register";
 import ServiceDetails from "../ServiceDetails/ServiceDetails";
+import PrivateRoute from "./PrivateRoute";
+import MyProfile from "../Home/MyProfile";
+import About from "../Home/About";
 
 const Router = createBrowserRouter([
     {
@@ -27,7 +30,9 @@ const Router = createBrowserRouter([
     },
     {
         path: '/service/:services_id',
-        element: <ServiceDetails></ServiceDetails>,
+        element: (<PrivateRoute>
+            <ServiceDetails></ServiceDetails>
+        </PrivateRoute>),
         loader: ({ params }) => {
             return fetch('/services.json')
                 .then(res => {
@@ -37,7 +42,7 @@ const Router = createBrowserRouter([
                     return res.json();
                 })
                 .then(data => {
-                    const service = data.find(service => service.service_id === params.service_id);
+                    data.find(service => service.service_id === params.service_id);
                     return data || null;
                 })
                 .catch(error => {
@@ -45,6 +50,14 @@ const Router = createBrowserRouter([
                     return null;
                 });
         },
+    },
+    {
+        path: '/myProfile',
+        element: <MyProfile></MyProfile>
+    },
+    {
+       path:'/about',
+       element: <About></About>
     },
     {
         path: '*',

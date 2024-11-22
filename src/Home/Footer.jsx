@@ -7,7 +7,7 @@ import moment from "moment";
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-900 text-gray-300 py-10">
+        <footer className="bg-gray-900 text-gray-300 py-20">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
@@ -54,7 +54,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="border-t border-gray-700 mt-8"></div>
-                <div className="text-center text-sm mt-4">
+                <div className="text-center text-sm mt-12">
                     &copy; {moment().format("dddd, MMMM Do YYYY")} CareerField. All rights reserved.
                 </div>
             </div>
