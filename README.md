@@ -13,8 +13,8 @@ Currently, two official plugins are available:
 🌟 CareerField
 CareerField is a comprehensive career guidance platform designed to help users make informed decisions about their professional journeys. From exploring career options to managing personal profiles, CareerField offers tools and resources to support every step of your career path.
 
-🌐 Live Site URL
-Visit CareerField
+🌐 ```Live Site URL```
+Visit CareerField :  ```https://career-field.web.app```
 
 📋 Key Features:
 🔐 Secure User Authentication

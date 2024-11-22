@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import google from '../assets/google-logo.png';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 
@@ -35,8 +35,12 @@ const Register = () => {
             photoURL: photo,
         })
             .then(res => {
-                setUser({ ...res.user, displayName: name, photoURL: photo });
-                toast.success("Account created successfully!");
+                updateUser({ displayName: name, photoURL: photo })
+                .then(()=>{
+                    setUser({ ...res.user, displayName: name, photoURL: photo });
+                    toast.success("Account created successfully!");
+                })
+               
             })
             .catch(error => {
                 setError(error.message);
