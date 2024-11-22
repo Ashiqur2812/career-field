@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../Home/MyProfile";
 import About from "../Home/About";
 import NotFound from "../NotFound/NotFound";
+import CareerInsights from "../components/CareerInsights";
 
 const Router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const Router = createBrowserRouter([
     {
        path:'/about',
        element: <About></About>
+    },
+    {
+        path:'/careerInsights',
+        element: <CareerInsights></CareerInsights>
     },
     {
         path: '*',

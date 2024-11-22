@@ -17,7 +17,10 @@ const Header = () => {
             About
         </NavLink>
         {
-            user && <NavLink className="text-white hover:text-yellow-300" to='/myProfile'>My Profile</NavLink>
+            user && <>
+                <NavLink className="text-white hover:text-yellow-300 mr-4" to='/myProfile'>My Profile</NavLink>
+                <NavLink className="text-white hover:text-yellow-300" to='/careerInsights'>Career Insights</NavLink>
+            </>
         }
     </>;
 
