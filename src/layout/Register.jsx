@@ -6,9 +6,10 @@ import toast from "react-hot-toast";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { createUser, user, setUser, googleAuth } = useContext(AuthContext);
-    const [error, setError] = useState({});
-    const handleRegister = e => {
+    const { createUser, updateUser, setUser, googleAuth } = useContext(AuthContext);
+    const [error, setError] = useState(null);
+
+    const handleRegister = async (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const name = form.get('name');
@@ -29,27 +30,20 @@ const Register = () => {
             return;
         }
 
-
-        createUser(email, password, {
-            displayName: name,
-            photoURL: photo,
-        })
-            .then(res => {
-                updateUser({ displayName: name, photoURL: photo })
-                .then(()=>{
-                    setUser({ ...res.user, displayName: name, photoURL: photo });
-                    toast.success("Account created successfully!");
-                })
-               
-            })
-            .catch(error => {
-                setError(error.message);
-                toast.error(error.message);
-            });
+        try {
+            const res = await createUser(email, password);
+            await updateUser({ displayName: name, photoURL: photo });
+            setUser({ ...res.user, displayName: name, photoURL: photo });
+            toast.success("Account created successfully!");
+            console.log("Profile updated:", res.user);
+        } catch (error) {
+            setError(error.message);
+            toast.error(error.message);
+        }
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen py-24 bg-gradient-to-br from-purple-500 to-pink-500 ">
+        <div className="flex items-center justify-center min-h-screen py-24 bg-gradient-to-br from-purple-500 to-pink-500">
             <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-lg">
                 <h2 className="text-3xl font-bold text-center text-purple-700 mb-6">
                     Join CareerField
@@ -111,7 +105,6 @@ const Register = () => {
                         >
                             {showPassword ? "🙈" : "👁️"}
                         </button>
-
                     </div>
                     <button className="btn btn-primary w-full mt-4">Create Account</button>
                 </form>
@@ -123,7 +116,7 @@ const Register = () => {
                 <button onClick={googleAuth} className="btn btn-outline w-full flex items-center justify-center">
                     <img
                         src={google}
-                        alt=""
+                        alt="Google logo"
                         className="w-6 h-6 mr-2"
                     />
                     Sign up with Google
@@ -140,3 +133,4 @@ const Register = () => {
 };
 
 export default Register;
+
