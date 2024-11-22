@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
-import { sendEmailVerification } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import Header from '../components/Header';
-import { auth } from '../firebase_init';
 
 const MyProfile = () => {
-    const { user, updateUser } = useContext(AuthContext);
-    // const [name, setName] = useState(user?.displayName || '');
-    // const [photoURL, setPhotoURL] = useState(user?.photoURL || '');
+    const { user, updateUser } = useContext(AuthContext)
 
     const handleUpdate = (e) => {
         e.preventDefault();

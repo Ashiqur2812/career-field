@@ -9,7 +9,6 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
-    console.log(user);
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -24,7 +23,6 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         try {
             await signOut(auth);
-            // setUser(null);
             setLoading(false);
         } catch (error) {
             console.log('ERROR', error.message);
@@ -61,10 +59,6 @@ const AuthProvider = ({ children }) => {
             unSubscribe();
         };
     }, []);
-
-    // useEffect(() => {
-    //     setUser('user', user);
-    // }, [user]);
 
     const info = {
         user,

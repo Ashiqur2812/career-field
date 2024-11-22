@@ -15,7 +15,7 @@ import { AuthContext } from '../provider/AuthProvider';
 
 const Slider = () => {
     const { githubAuth } = useContext(AuthContext);
-    
+
     const slideVariants = {
         hidden: { opacity: 0, x: -50 },
         visible: { opacity: 1, x: 0, transition: { duration: 1 } },
@@ -57,7 +57,6 @@ const Slider = () => {
                     </div>
                 </div>
             </div>
-
             <div className="bg-gradient-to-r from-gray-800 via-teal-500 to-blue-900 min-h-screen flex items-center justify-center">
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
@@ -67,7 +66,6 @@ const Slider = () => {
                     loop
                     className="w-full max-w-7xl"
                 >
-                    {/* Slide 1 */}
                     <SwiperSlide>
                         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
                             <motion.div
@@ -80,13 +78,6 @@ const Slider = () => {
                                 <p className="text-lg">
                                     Unlock the best opportunities with expert career advice and personalized guidance.
                                 </p>
-                                {/* <motion.button
-                                    className="btn bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-md"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Learn More
-                                </motion.button> */}
                             </motion.div>
                             <div className="overflow-hidden">
                                 <motion.img
@@ -98,8 +89,6 @@ const Slider = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-
-                    {/* Slide 2 */}
                     <SwiperSlide>
                         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
                             <motion.div
@@ -112,13 +101,6 @@ const Slider = () => {
                                 <p className="text-lg">
                                     Get professional tips to make your resume stand out and land your dream job.
                                 </p>
-                                {/* <motion.button
-                                    className="btn bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-md"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Explore Services
-                                </motion.button> */}
                             </motion.div>
                             <div className="overflow-hidden">
                                 <motion.img
@@ -130,8 +112,6 @@ const Slider = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-
-                    {/* Slide 3 */}
                     <SwiperSlide>
                         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
                             <motion.div
@@ -144,13 +124,6 @@ const Slider = () => {
                                 <p className="text-lg">
                                     Practice with experts and prepare to impress in your next interview.
                                 </p>
-                                {/* <motion.button
-                                    className="btn bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-md"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Get Started
-                                </motion.button> */}
                             </motion.div>
                             <div className="overflow-hidden">
                                 <motion.img
@@ -162,8 +135,6 @@ const Slider = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-
-                    {/* slide 4 */}
                     <SwiperSlide>
                         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
                             <motion.div
@@ -176,13 +147,6 @@ const Slider = () => {
                                 <p className="text-lg">
                                     Practice with experts and prepare to impress in your next interview.
                                 </p>
-                                {/* <motion.button
-                                    className="btn bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-md"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Get Started
-                                </motion.button> */}
                             </motion.div>
                             <div className="overflow-hidden">
                                 <motion.img

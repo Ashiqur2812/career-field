@@ -3,14 +3,11 @@ import google from '../assets/google-logo.png';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
-import { sendEmailVerification } from "firebase/auth";
-import { auth } from "../firebase_init";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { createUser, setUser, googleAuth, updateUser } = useContext(AuthContext);
+    const { createUser, user, setUser, googleAuth } = useContext(AuthContext);
     const [error, setError] = useState({});
-    const navigate = useNavigate();
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.target);
@@ -18,29 +15,31 @@ const Register = () => {
         const email = form.get('email');
         const photo = form.get('photo');
         const password = form.get('password');
-        console.log(name, email, photo, password);
-        setError({ ...error, register: error.code });
+
+        setError(null);
 
         if (password.length < 6) {
             toast.error('Password must have at least 6 characters');
             return;
         }
 
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])$/;
-
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])/;
         if (!passwordRegex.test(password)) {
-            toast.error("Password must have at least one uppercase letter, one lowercase letter.");
+            toast.error("Password must contain at least one uppercase and one lowercase letter.");
             return;
         }
 
 
-        createUser(email, password)
+        createUser(email, password, {
+            displayName: name,
+            photoURL: photo,
+        })
             .then(res => {
-                setUser(res.user);
-                toast.success(res.user);
+                setUser({ ...res.user, displayName: name, photoURL: photo });
+                toast.success("Account created successfully!");
             })
             .catch(error => {
-                setUser('ERROR', error.message);
+                setError(error.message);
                 toast.error(error.message);
             });
     };
@@ -108,13 +107,7 @@ const Register = () => {
                         >
                             {showPassword ? "🙈" : "👁️"}
                         </button>
-                        {
-                            error.register && (
-                                <label className='label text-sm text-rose-600'>
-                                    {error.register}
-                                </label>
-                            )
-                        }
+
                     </div>
                     <button className="btn btn-primary w-full mt-4">Create Account</button>
                 </form>

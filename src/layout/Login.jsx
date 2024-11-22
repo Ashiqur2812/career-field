@@ -12,8 +12,8 @@ const Login = () => {
     const emailRef = useRef();
     const [error, setError] = useState({});
     const location = useLocation();
-    console.log(location);
     const navigate = useNavigate();
+
     const handleLogin = e => {
         e.preventDefault();
         const form = new FormData(e.target);
@@ -24,11 +24,12 @@ const Login = () => {
         signInUser(email, password)
             .then(res => {
                 setUser(res.user);
-                console.log(res.user);
+                toast.success('login successful');
                 navigate(location?.state ? location.state : '/');
             })
             .catch(err => {
                 setError({ ...error, login: err.code });
+                toast.error(err.message)
             });
     };
 

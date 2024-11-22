@@ -9,6 +9,7 @@ import MyProfile from "../Home/MyProfile";
 import About from "../Home/About";
 import NotFound from "../NotFound/NotFound";
 import CareerInsights from "../components/CareerInsights";
+import toast from "react-hot-toast";
 
 const Router = createBrowserRouter([
     {
@@ -35,22 +36,19 @@ const Router = createBrowserRouter([
         element: (<PrivateRoute>
             <ServiceDetails></ServiceDetails>
         </PrivateRoute>),
-        loader: ({ params }) => {
-            return fetch('/services.json')
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error('Failed to fetch data');
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    data.find(service => service.service_id === params.service_id);
-                    return data || null;
-                })
-                .catch(error => {
-                    console.log('ERROR', error.message);
-                    return null;
-                });
+        loader: async ({ params }) => {
+            try {
+                const res = await fetch('/services.json');
+                if (!res.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await res.json();
+                data.find(service => service.service_id === params.service_id);
+                return data || null;
+            } catch (error) {
+                toast.error(error);
+                return null;
+            }
         },
     },
     {

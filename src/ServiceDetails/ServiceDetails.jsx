@@ -39,8 +39,6 @@ const ServiceDetails = () => {
                             </div>
                         </div>
                     </section>
-
-                    {/* <!-- Key Features Section --> */}
                     <section class="mt-12 w-11/12 max-w-6xl">
                         <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Why Choose This Service?</h2>
                         <div class="grid md:grid-cols-3 gap-8">
@@ -58,20 +56,15 @@ const ServiceDetails = () => {
                             </div>
                         </div>
                     </section>
-
-                    {/* <!-- User Reviews Section --> */}
                     <section class="mt-12 w-11/12 max-w-6xl bg-white shadow-lg rounded-lg p-8">
                         <h2 class="text-3xl font-bold text-gray-800 mb-6">What Our Users Say</h2>
                         <div class="">
-                            {/* <!-- Swiper Slide 1 --> */}
                             <div class=" bg-gray-50 p-6 rounded-lg shadow">
                                 <p class="text-gray-700 italic">"This session helped me gain clarity in my career direction. Highly recommended!"</p>
                                 <p class="mt-4 text-sm font-semibold text-indigo-600">- {data.counselor}</p>
                             </div>
                         </div>
                     </section>
-
-                    {/* <!-- Feedback Section --> */}
                     <section class="mt-12 w-11/12 max-w-4xl bg-white shadow-lg rounded-lg p-8">
                         <h2 class="text-3xl font-bold text-gray-800 mb-6">Leave a Feedback</h2>
                         <form>
@@ -87,13 +80,6 @@ const ServiceDetails = () => {
                             </button>
                         </form>
                     </section>
-
-                    {/* <!-- Sticky Footer CTA --> */}
-                    {/* <footer class="fixed bottom-4 right-4">
-                        <button class="bg-green-600 text-white px-8 py-3 rounded-lg shadow hover:bg-green-700">
-                            Book Now
-                        </button>
-                    </footer> */}
                     <div className='mt-32'>
                         <Footer></Footer>
                     </div>
