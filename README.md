@@ -36,7 +36,7 @@ Clone the Repository:
 
 ``bash``
 
-git clone: ```https://github.com/programming-hero-web-course1/b10-a9-authentication-Ashiqur2812```
+git clone: ```https://github.com/Ashiqur2812/career-field```
 
 
 
